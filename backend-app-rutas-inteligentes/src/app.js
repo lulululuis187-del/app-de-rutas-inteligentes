@@ -19,6 +19,17 @@ app.use(async (_req, _res, next) => {
   }
 });
 
+app.get(['/', '/api'], (_req, res) => {
+  res.json({
+    ok: true,
+    servicio: 'ruta-facil',
+    mensaje: 'API de RutaLocal. Esta URL es el backend, no la PWA.',
+    salud: '/api/health',
+    rutas: '/api/rutas',
+    auth: '/api/auth/login',
+  });
+});
+
 app.get('/api/health', async (_req, res) => {
   res.json({ ok: true, servicio: 'ruta-facil' });
 });
